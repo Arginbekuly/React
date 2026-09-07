@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Refresher — Practice Tasks</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: #38bdf8;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .card.highlight {
+            border-color: #10b981;
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            color: #f8fafc;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 8px;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .label-code { color: #38bdf8; }
+        .label-result { color: #4ade80; }
+        .label-insight { color: #fbbf24; }
+
+        .code-block {
+            background: #090d16;
+            color: #e2e8f0;
+            padding: 14px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.88rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            border: 1px solid #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .output {
+            background: #022c22;
+            color: #86efac;
+            padding: 14px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.88rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            border: 1px solid #065f46;
+            margin-bottom: 16px;
+        }
+
+        .insight {
+            background-color: #172554;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 0.95rem;
+            color: #bfdbfe;
+            border: 1px solid #1e40af;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>JavaScript Refresher Results</h1>
+    <p>Практические задачи JS перед стартом с React</p>
+</header>
+
+<main class="container">
+    <!-- Task 1 -->
+    <section class="card">
+        <h2>Task 1: Basic Variables & Data Types</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">const name = "Kydyrali";
+let age = 21;
+const isActive = true;
+const courses = ["JS", "Enterprises", "Golang"];
+const address = { city: "Almaty", street: "Pushkin" };
+const schoolName = null;
+let country;</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task1"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            const применяется для неизменяемого типа данных. Например, я дал const для name, courses, address, потому что они остаются неизменяемыми. А let мы позже можем переприсвоить. Например age — в следующем году можем изменить его на 22. Когда мы передаем null, это не критично, потом можем изменить. Также переменная country пока без значения (undefined).
+        </div>
+    </section>
+
+    <!-- Task 2 -->
+    <section class="card">
+        <h2>Task 2: Array Operations</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">const numbers = [3, 7, 2, 10, 5];
+numbers.map(number => number * 2);
+numbers.filter(number => number > 5);
+numbers.find(number => number >= 5);
+numbers.reduce((sum, number) => sum + number, 0);
+numbers.includes(10);</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task2"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Тут я попрактиковался с методами массивов. Через map я умножил каждое число на 2. Filter забирает только те числа, которые больше 5. Через find я нахожу самое первое число, которое больше или равно 5 (в нашем случае это 7). Reduce нужен, чтобы посчитать общую сумму всех элементов, а includes просто проверяет, есть ли число 10 в массиве или нет.
+        </div>
+    </section>
+
+    <!-- Task 3 -->
+    <section class="card">
+        <h2>Task 3: Array of Objects</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">const students = [
+    { id: 1, name: 'Anna', grade: 85 },
+    { id: 2, name: 'John', grade: 62 },
+    { id: 3, name: 'Sara', grade: 91 },
+    { id: 4, name: 'Mike', grade: 55 }
+];
+students.filter(student => student.grade >= 70);
+students.map(student => ({ ...student, passed: student.grade >= 70 }));</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task3"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Здесь мы работаем с массивом объектов студентов. Сначала отфильтровали тех, у кого оценка 70 и выше. А в последнем пункте я использовал спред-оператор <code>...student</code>, чтобы скопировать старые данные студента и добавить новое поле <code>passed</code>. Это удобно, потому что мы не портим исходный массив.
+        </div>
+    </section>
+
+    <!-- Task 4 -->
+    <section class="card">
+        <h2>Task 4: Object Operations & Destructuring</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">const user = { firstName: 'Kydyrali', lastName: 'Arginbekuly', age: 20, address: { city: 'Almaty', street: 'Pushkin 3/1' } };
+user.age = 22;
+delete user.address.street;
+const { firstName, age } = user;
+const { address: { city } } = user;</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task4"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            В этом задании я меняю поля объекта — поменял возраст на 22 и через <code>delete</code> удалил street из адреса. В конце использовал деструктуризацию, чтобы вытащить firstName, age и отдельно city из вложенного объекта address. В React это очень часто используется при передаче пропсов.
+        </div>
+    </section>
+
+    <!-- Task 5 -->
+    <section class="card">
+        <h2>Task 5: Shallow vs Deep Copying</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">// Поверхностная копия:
+const copy = { ...original };
+// Глубокая копия вложенного объекта:
+const deepCopiedUser = { ...user, address: { ...user.address } };</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task5"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Обычный <code>{...original}</code> делает только поверхностную копию. Если у нас внутри есть еще один объект (как address), то при обычном спреде он будет ссылаться на ту же память. Поэтому для адреса я сделал еще один спред <code>address: { ...user.address }</code>, чтобы изменения в копии не меняли оригинал.
+        </div>
+    </section>
+
+    <!-- Task 6 & 7 -->
+    <section class="card">
+        <h2>Task 6 & 7: Functions & Higher-Order Functions</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">const add = (a, b) => a + b;
+const multiply = (a, b) => a * b;
+const calculate = (a, b, operation) => operation(a, b);</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-tasks6-7"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Здесь я написал обычные функции и стрелочные. В 7 задании функция <code>calculate</code> принимает другую функцию как аргумент (например, <code>add</code> или <code>multiply</code>) и вызывает ее внутри. Это называется функция высшего порядка или колбэк.
+        </div>
+    </section>
+
+    <!-- Task 8 & 9 -->
+    <section class="card">
+        <h2>Task 8 & 9: Scope & Closures</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">function createCount() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+const count2 = createCount();</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-tasks8-9"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Замыкание — это когда внутренняя функция запоминает переменные из внешней функции, даже когда внешняя уже завершила работу. Поэтому когда мы вызываем <code>count2()</code> несколько раз, переменная <code>count</code> не сбрасывается, а постоянно увеличивается.
+        </div>
+    </section>
+
+    <!-- Task 10 -->
+    <section class="card">
+        <h2>Task 10: Array/Object Destructuring, Spread & Rest</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">const [first, second] = numbers;
+const merged = [...array1, ...array2];
+const sum = (...number) => number.reduce((sum, curr) => sum + curr, 0);</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task10"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Спред <code>...</code> помогает быстро разворачивать массивы или объекты (например, чтобы склеить array1 и array2). А Rest-параметр <code>(...number)</code> наоборот собирает все переданные в функцию числа в один массив, чтобы мы могли посчитать их сумму через reduce.
+        </div>
+    </section>
+
+    <!-- Task 11 -->
+    <section class="card">
+        <h2>Task 11: Optional Chaining (?.) & Nullish Coalescing (??)</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">users.forEach(user => {
+    const city = user?.address?.city ?? "City not specified";
+});</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-task11"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Оператор <code>?.</code> нужен, чтобы сайт не падал с ошибкой, если у юзера нет объекта address. А <code>??</code> подставляет дефолтный текст "City not specified", только если значение равно null или undefined.
+        </div>
+    </section>
+
+    <!-- Final Task -->
+    <section class="card highlight">
+        <h2>Final Task: Comprehensive Student Analysis</h2>
+
+        <span class="section-label label-code">1. Исходный код:</span>
+        <pre class="code-block">function getAverage(grades) { return grades.reduce((sum, g) => sum + g, 0) / grades.length; }
+function getPassedStudents(students) { return students.filter(s => getStudentAverage(s) >= 70); }
+function getTopStudent(students) {
+    return students.reduce((top, s) => getStudentAverage(top) <= getStudentAverage(s) ? s : top, students[0]);
+}</pre>
+
+        <span class="section-label label-result">2. Результат работы:</span>
+        <div class="output" id="output-final"></div>
+
+        <span class="section-label label-insight">3. Пояснение:</span>
+        <div class="insight">
+            Финальное задание, где собрано всё вместе. Я написал функции для расчета среднего балла каждого студента, фильтрации прошедших (порог 70) и поиска самого лучшего студента через <code>reduce</code>. В конце с помощью map и спреда добавил всем студентам статус сдал/не сдал.
+        </div>
+    </section>
+</main>
+
+<script>
+    function renderOutput(elementId, content) {
+        const el = document.getElementById(elementId);
+        if (el) {
+            el.textContent = typeof content === 'object' ? JSON.stringify(content, null, 2) : content;
+        }
+    }
+
+    // Task 1
+    const name = "Kydyrali";
+    let age = 21;
+    const isActive = true;
+    const courses = ["JS", "Enterprises", "Golang"];
+    const address = { city: "Almaty", street: "Pushkin" };
+    const schoolName = null;
+    let country;
+    const aboutStudent = `The about student his name is ${name}, age ${age}, living in address ${address.city} at street ${address.street}`;
+
+    renderOutput('output-task1', [
+        `Name: ${name} | Type: ${typeof name}`,
+        `Age: ${age} | Type: ${typeof age}`,
+        `Status: ${isActive} | Type: ${typeof isActive}`,
+        `Courses: ${JSON.stringify(courses)} | Type: ${typeof courses}`,
+        `Address: ${JSON.stringify(address)} | Type: ${typeof address}`,
+        `School name: ${schoolName} | Type: ${typeof schoolName}`,
+        `Country: ${country} | Type: ${typeof country}`,
+        `\nResult: ${aboutStudent}`
+    ].join('\n'));
+
+    // Task 2
+    const numbers = [3, 7, 2, 10, 5];
+    renderOutput('output-task2', [
+        `Multiply every number by 2: [${numbers.map(n => n * 2).join(', ')}]`,
+        `Numbers greater than 5: [${numbers.filter(n => n > 5).join(', ')}]`,
+        `First number >= 5: ${numbers.find(n => n >= 5)}`,
+        `Sum of numbers: ${numbers.reduce((sum, n) => sum + n, 0)}`,
+        `Check whether 10 exists: ${numbers.includes(10)}`
+    ].join('\n'));
+
+    // Task 3
+    const t3Students = [
+        { id: 1, name: 'Anna', grade: 85 },
+        { id: 2, name: 'John', grade: 62 },
+        { id: 3, name: 'Sara', grade: 91 },
+        { id: 4, name: 'Mike', grade: 55 }
+    ];
+    renderOutput('output-task3', [
+        `Students with grade >= 70: ${JSON.stringify(t3Students.filter(s => s.grade >= 70))}`,
+        `Student names: ${JSON.stringify(t3Students.map(s => s.name))}`,
+        `Student ID=3: ${JSON.stringify(t3Students.find(s => s.id === 3))}`,
+        `Average grade: ${t3Students.reduce((sum, s) => sum + s.grade, 0) / t3Students.length}`,
+        `Updated list (with 'passed'):\n${JSON.stringify(t3Students.map(s => ({ ...s, passed: s.grade >= 70 })), null, 2)}`
+    ].join('\n\n'));
+
+    // Task 4
+    const user = { firstName: 'Kydyrali', lastName: 'Arginbekuly', age: 20, address: { city: 'Almaty', street: 'Pushkin 3/1' } };
+    user.age = 22;
+    user.email = "k_arginbekuly@kbtu.kz";
+    delete user.address.street;
+    const { firstName: fName, age: uAge, address: { city: uCity } } = user;
+
+    renderOutput('output-task4', [
+        `Read Name & City: ${fName} ${user.lastName}, ${uCity}`,
+        `Updated Age: ${uAge}`,
+        `Added Email: ${user.email}`,
+        `User object (street deleted): ${JSON.stringify(user)}`
+    ].join('\n'));
+
+    // Task 5
+    const original = { name: "Alice", score: 10 };
+    const copy = { ...original };
+    copy.score = 15;
+
+    const nestedUser = { name: "Alice", address: { city: "Almaty" } };
+    const deepCopiedUser = { ...nestedUser, address: { ...nestedUser.address } };
+    deepCopiedUser.address.city = "Astana";
+
+    renderOutput('output-task5', [
+        `Shallow copy test -> Original: ${JSON.stringify(original)} | Copy: ${JSON.stringify(copy)}`,
+        `Deep copy test -> Original City: "${nestedUser.address.city}" | Deep Copy City: "${deepCopiedUser.address.city}"`
+    ].join('\n'));
+
+    // Task 6 & 7
+    const calculate = (a, b, op) => op(a, b);
+    renderOutput('output-tasks6-7', [
+        `isEven(5): ${5 % 2 === 0}`,
+        `calculate(4, 6, add): ${calculate(4, 6, (a, b) => a + b)}`,
+        `calculate(4, 6, multiply): ${calculate(4, 6, (a, b) => a * b)}`
+    ].join('\n'));
+
+    // Task 8 & 9
+    function createCount() {
+        let count = 0;
+        return () => ++count;
+    }
+    const counter1 = createCount();
+    const counter2 = createCount();
+
+    renderOutput('output-tasks8-9', [
+        `Counter 1 calls: ${counter1()}, ${counter1()}, ${counter1()}`,
+        `Counter 2 (independent instance): ${counter2()}`
+    ].join('\n'));
+
+    // Task 10
+    const t10Numbers = [10, 20, 30, 40];
+    const [first, second] = t10Numbers;
+    const sumRest = (...nums) => nums.reduce((s, c) => s + c, 0);
+
+    renderOutput('output-task10', [
+        `Destructured array: first=${first}, second=${second}`,
+        `Spread array: ${JSON.stringify([...t10Numbers, 50])}`,
+        `Merged arrays: ${JSON.stringify([...[10, 20], ...[30, 40]])}`,
+        `Rest parameter sum (1, 2, 3, 4): ${sumRest(1, 2, 3, 4)}`
+    ].join('\n'));
+
+    // Task 11
+    const usersList = [
+        { name: "Dos", address: { city: "Almaty", street: "Pushkin" } },
+        { name: "Baha", email: "baha@gmail.com" },
+        { name: "Kana", address: { city: "Almaty", street: "Abay" } },
+        { name: "Dinur", email: "dinur@gmail.com" }
+    ];
+
+    renderOutput('output-task11', usersList.map(u => `${u.name} : ${u?.address?.city ?? "City not specified"}`).join('\n'));
+
+    // Final Task
+    const finalStudents = [
+        { id: 1, name: "Kydyrali", age: 20, grades: [75, 10, 50] },
+        { id: 2, name: "Dinur", age: 19, grades: [94, 87, 75] },
+        { id: 3, name: "Kana", age: 21, grades: [85, 89, 65] },
+        { id: 4, name: "Baha", age: 22, grades: [95, 85, 93] },
+        { id: 5, name: "Dos", age: 20, grades: [75, 75, 92] }
+    ];
+
+    const getAvg = grades => grades.reduce((sum, g) => sum + g, 0) / grades.length;
+    const getStudentAvg = s => getAvg(s.grades);
+
+    renderOutput('output-final', [
+        `1. Baha's Average Grade: ${getAvg(finalStudents[3].grades).toFixed(2)}`,
+        `2. Dinur's Average Grade: ${getStudentAvg(finalStudents[1]).toFixed(2)}`,
+        `3. Passed Students: ${JSON.stringify(finalStudents.filter(s => getStudentAvg(s) >= 70).map(s => s.name))}`,
+        `4. Top Student: ${finalStudents.reduce((top, s) => getStudentAvg(top) <= getStudentAvg(s) ? s : top, finalStudents[0]).name}`,
+        `5. List with 'passed' property:\n${JSON.stringify(finalStudents.map(s => ({ ...s, passed: getStudentAvg(s) >= 70 })), null, 2)}`
+    ].join('\n\n'));
+</script>
+</body>
+</html>
