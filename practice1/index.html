@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Async & Runtime Homework</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>JavaScript Async & Tasks Management</h1>
+
+<div class="tasks-container">
+    <div class="task-card" id="card-users">
+        <h3>Load Users</h3>
+        <p>Статус: <span id="status-users">Not started</span></p>
+        <p>Запусков: <span id="count-users">0</span></p>
+        <p>Время: <span id="time-users">-</span> ms</p>
+        <button id="btn-users">Run Load Users</button>
+    </div>
+
+    <div class="task-card" id="card-posts">
+        <h3>Load Posts</h3>
+        <p>Статус: <span id="status-posts">Not started</span></p>
+        <p>Запусков: <span id="count-posts">0</span></p>
+        <p>Время: <span id="time-posts">-</span> ms</p>
+        <button id="btn-posts">Run Load Posts</button>
+    </div>
+
+    <div class="task-card" id="card-comments">
+        <h3>Load Comments</h3>
+        <p>Статус: <span id="status-comments">Not started</span></p>
+        <p>Запусков: <span id="count-comments">0</span></p>
+        <p>Время: <span id="time-comments">-</span> ms</p>
+        <button id="btn-comments">Run Load Comments</button>
+    </div>
+</div>
+
+<div class="controls">
+    <button id="btn-run-all" class="main-btn">Run All Tasks (Parallel)</button>
+    <button id="btn-compare" class="main-btn">Compare Sequential vs Parallel</button>
+    <button id="btn-event-loop" class="main-btn demo-btn">Run Event Loop Demo</button>
+</div>
+
+<div class="output-panel">
+    <h2>Лог результатов:</h2>
+    <div id="output-text">Нажмите любую кнопку выше для старта</div>
+</div>
+
+<div class="reset">
+    <button id="btn-reset">Reset</button>
+</div>
+<script src="miniProject.js"></script>
+</body>
+</html>
