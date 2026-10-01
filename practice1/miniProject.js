@@ -111,10 +111,10 @@ document.getElementById("btn-compare").addEventListener("click", async () => {
     const parTime = (endPar - startPar).toFixed(2);
     if (outputText) {
         outputText.innerHTML = `
-            <p><strong>Последовательное выполнение (Sequential):</strong> ${seqTime} ms</p>
-            <p><strong>Параллельное выполнение (Parallel):</strong> ${parTime} ms</p>
+            <p><strong>Sequential execution (Sequential):</strong> ${seqTime} ms</p>
+            <p><strong>Parallel execution (Parallel):</strong> ${parTime} ms</p>
             <hr>
-            <p><em>Параллельное выполнение быстрее, так как таймеры стартуют одновременно в Web API!</em></p>
+            <p><em>Parallel execution is faster because the timers start simultaneously in the Web API!</em></p>
         `;
     }
 })
@@ -133,13 +133,20 @@ document.getElementById("btn-event-loop").addEventListener("click", () => {
         console.log("3: Promise .then() callback (Microtask)");
     });
 
+     taskComments.run()
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    });
+
+
+
+
     console.log("2: Synchronous code end (Call Stack)");
 
     const outputText = document.getElementById("output-text");
     if (outputText) {
-        outputText.innerHTML = "Демо запущено! <strong>Откройте консоль браузера (F12)</strong>, чтобы увидеть реальный порядок выполнения Event Loop.";
+        outputText.innerHTML = "The demo has been launched! <strong>Open the browser console (F12)</strong> to see the actual order of Event Loop execution."
     }
-});
 
 document.getElementById("btn-reset").addEventListener("click", () => {
     taskUsers.reset();
@@ -161,7 +168,7 @@ document.getElementById("btn-reset").addEventListener("click", () => {
 
     const outputText = document.getElementById("output-text");
     if (outputText) {
-        outputText.innerHTML = "Все счётчики сброшены!";
+        outputText.innerHTML = "All counter is dropped";
     }
 })
 
