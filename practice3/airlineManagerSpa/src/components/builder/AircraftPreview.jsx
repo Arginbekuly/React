@@ -1,12 +1,17 @@
 import { PlaneIllustration } from '../ui/PlaneIllustration';
 import { AircraftStats } from '../catalog/AircraftStats';
 import { money } from '../../data';
+import { AircraftPhoto } from '../ui/AircraftPhoto';
 
 export function AircraftPreview({ model }) {
   return (
     <article className="ticket">
       <div className="blueprint relative flex h-[190px] items-center justify-center">
-        <PlaneIllustration className="w-full max-w-[410px] px-6" color={model.livery} />
+        {model.photo ? (
+          <AircraftPhoto model={model} />
+        ) : (
+          <PlaneIllustration className="w-full max-w-[410px] px-6" color={model.livery} />
+        )}
         <span className="eyebrow absolute top-3 left-3 rounded-md bg-paper px-2 py-1">
           Новая модель
         </span>

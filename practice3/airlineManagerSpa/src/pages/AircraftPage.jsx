@@ -7,6 +7,7 @@ import { fakeApi } from '../api/fakeApi';
 import { LoadingState } from '../components/ui/LoadingState';
 import { ErrorMessage } from '../components/ui/ErrorMessage';
 import { EmptyState } from '../components/ui/EmptyState';
+import { AircraftPhoto } from '../components/ui/AircraftPhoto';
 
 export function AircraftPage({ id, revision, showDemo, ...props }) {
   const [retryKey, setRetryKey] = useState(0);
@@ -94,7 +95,14 @@ function AircraftDetails({ model, models, balance, onBuy, onRent, onDetails, onN
               Доступен к покупке и аренде
             </span>
           </div>
-          <PlaneIllustration color={model.livery} className="mx-auto w-full max-w-[480px] py-8" />
+          {model.photo ? (
+            <AircraftPhoto
+              model={model}
+              className="mx-auto aspect-[2/1] w-full max-w-[480px] rounded-xl object-cover"
+            />
+          ) : (
+            <PlaneIllustration color={model.livery} className="mx-auto w-full max-w-[480px] py-8" />
+          )}
         </div>
         <div className="grid gap-4 p-5 sm:grid-cols-2 sm:p-7 lg:grid-cols-4">
           {[

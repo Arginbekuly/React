@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SectionHeading } from '../ui/SectionHeading';
 import { AircraftPreview } from './AircraftPreview';
+import { AircraftPhotoPicker } from './AircraftPhotoPicker';
 
 const defaults = {
   name: '',
@@ -9,6 +10,7 @@ const defaults = {
   engines: 'Два турбовентиляторных',
   cabin: 'Эконом',
   livery: '#b23a2a',
+  photo: null,
 };
 const liveries = [
   ['#b23a2a', 'Красная'],
@@ -24,6 +26,8 @@ export function AircraftForm({ onCreate, showDemo }) {
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [simulateError, setSimulateError] = useState(false);
+  const [photoBusy, setPhotoBusy] = useState(false);
+  const [photoReset, setPhotoReset] = useState(0);
   const capacity = Number(form.capacity);
   const distance = Number(form.distance);
   const errors = {
@@ -45,7 +49,7 @@ export function AircraftForm({ onCreate, showDemo }) {
     rentPrice: Math.round(capacity * 7 + distance * 0.12),
   };
   const change = (key, value) => {
-    setForm({ ...form, [key]: value });
+    setForm((previous) => ({ ...previous, [key]: value }));
     setSubmitted(false);
   };
   const field = (key, label, type = 'text') => (
@@ -83,7 +87,7 @@ export function AircraftForm({ onCreate, showDemo }) {
           aria-busy={sending}
           onSubmit={async (event) => {
             event.preventDefault();
-            if (sending || Object.values(errors).some(Boolean)) return;
+            if (sending || photoBusy || Object.values(errors).some(Boolean)) return;
             setSending(true);
             setSubmitError('');
             setSubmitted(false);
@@ -92,6 +96,7 @@ export function AircraftForm({ onCreate, showDemo }) {
             if (result.ok) {
               setForm(defaults);
               setSubmitted(true);
+              setPhotoReset((version) => version + 1);
             } else
               setSubmitError(result.error || 'Не удалось сохранить модель. Повторите отправку.');
           }}
@@ -153,9 +158,16 @@ export function AircraftForm({ onCreate, showDemo }) {
               ))}
             </div>
           </fieldset>
+          <AircraftPhotoPicker
+            key={photoReset}
+            value={form.photo}
+            onChange={(photo) => change('photo', photo)}
+            onBusyChange={setPhotoBusy}
+            disabled={sending}
+          />
           <button
             className="btn btn-primary"
-            disabled={sending || Object.values(errors).some(Boolean)}
+            disabled={sending || photoBusy || Object.values(errors).some(Boolean)}
             type="submit"
           >
             {sending ? 'Сохраняем модель…' : 'Отправить в разработку'}

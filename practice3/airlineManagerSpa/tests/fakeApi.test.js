@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import { createFakeApi, STORAGE_KEY } from '../src/api/fakeApi.js';
 import { createInitialState } from '../src/api/seed.js';
 import { airplanes } from '../src/data.js';
+import { aircraftPhotos } from '../src/data.js';
+import { MAX_PHOTO_LENGTH } from '../src/utils/aircraftPhoto.js';
+import { prepareAircraftPhoto } from '../src/utils/prepareAircraftPhoto.js';
 
 function setup(state) {
   const values = new Map(state ? [[STORAGE_KEY, JSON.stringify(state)]] : []);
@@ -202,4 +205,53 @@ test('ошибка записи не выдаётся за успех и не м
   };
   await assert.rejects(api.acquire('1'), /Хранилище переполнено/);
   assert.equal((await api.getGame()).balance, 22500);
+});
+
+test('выбранное фото сохраняется у модели, в деталях и у купленного борта', async () => {
+  const { api, storage } = setup();
+  const photo = aircraftPhotos[4];
+  const { model } = await api.createAircraft({
+    name: 'Модель с фото',
+    capacity: 180,
+    distance: 5600,
+    photo,
+  });
+  assert.deepEqual(model.photo, photo);
+  const reloaded = createFakeApi({ storage, delay: 1 });
+  assert.deepEqual((await reloaded.getAircraftById(model.id)).model.photo, photo);
+  assert.deepEqual((await reloaded.getAircraft({ search: 'Модель с фото' })).items[0].photo, photo);
+  const { game } = await reloaded.acquire(model.id);
+  assert.deepEqual(game.fleet[0].photo, photo);
+});
+
+test('загруженный файл хранится как data URL, недопустимые и слишком большие фото отклоняются', async () => {
+  const { api } = setup();
+  const src =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aT2cAAAAASUVORK5CYII=';
+  const data = { name: 'Свой самолёт', capacity: 180, distance: 5600 };
+  const { model } = await api.createAircraft({ ...data, photo: { src } });
+  assert.equal((await api.getAircraftById(model.id)).model.photo.src, src);
+  await assert.rejects(
+    api.createAircraft({ ...data, photo: { src: 'data:image/svg+xml;base64,PHN2Zz4=' } }),
+    /JPG, PNG и WebP/,
+  );
+  await assert.rejects(
+    api.createAircraft({ ...data, photo: { src: 'https://example.com/photo.jpg' } }),
+  );
+  await assert.rejects(
+    api.createAircraft({
+      ...data,
+      photo: { src: 'data:image/jpeg;base64,' + 'A'.repeat(MAX_PHOTO_LENGTH) },
+    }),
+    /слишком большая/,
+  );
+  assert.equal((await api.getAircraft()).total, 121);
+});
+
+test('загрузчик заранее отклоняет неподдерживаемый файл и файл больше 5 МБ', async () => {
+  await assert.rejects(
+    prepareAircraftPhoto({ type: 'image/svg+xml', size: 100 }),
+    /JPG, PNG или WebP/,
+  );
+  await assert.rejects(prepareAircraftPhoto({ type: 'image/jpeg', size: 6 * 1024 * 1024 }), /5 МБ/);
 });

@@ -1,20 +1,12 @@
-import { getAircraftPhoto, money } from '../../data';
+import { money } from '../../data';
+import { AircraftPhoto } from '../ui/AircraftPhoto';
 import { AircraftStats } from './AircraftStats';
 
 export function AircraftCard({ plane, balance, onBuy, onRent, onDetails }) {
-  const photo = getAircraftPhoto(plane.aircraftNumber ?? plane.id);
   return (
     <article className="ticket">
       <div className="relative h-[160px] overflow-hidden bg-line">
-        <img
-          src={photo.src}
-          alt={photo.alt}
-          className="h-full w-full object-cover"
-          style={{ objectPosition: photo.position }}
-          loading="lazy"
-          width="1000"
-          height="667"
-        />
+        <AircraftPhoto model={plane} />
         <span className="eyebrow absolute top-3 left-3 max-w-[85%] truncate rounded-md bg-paper px-2 py-1">
           Борт № {plane.aircraftNumber ?? plane.id}
         </span>

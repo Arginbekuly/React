@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { destinations, money } from '../data';
 import { PlaneIllustration } from './ui/PlaneIllustration';
+import { AircraftPhoto } from './ui/AircraftPhoto';
 import { StatusBadge } from './ui/StatusBadge';
 import { WearGauge } from './ui/WearGauge';
 export function FleetCard({
@@ -22,7 +23,7 @@ export function FleetCard({
         className="relative flex h-28 items-center justify-center"
         style={{ background: `linear-gradient(180deg,${plane.color},#eaf2f4)` }}
       >
-        <PlaneIllustration color={plane.livery} />
+        {plane.photo ? <AircraftPhoto model={plane} /> : <PlaneIllustration color={plane.livery} />}
         <span className="absolute top-3 left-3 rounded-md bg-paper px-2 py-1 font-mono text-[10px]">
           {plane.tailNumber}
         </span>

@@ -1,5 +1,6 @@
 import { destinations, hangarTypes, money } from '../data.js';
 import { createInitialState, migrateState } from './seed.js';
+import { normalizeAircraftPhoto } from '../utils/aircraftPhoto.js';
 
 export const STORAGE_KEY = 'skyline-air-redesign-v1';
 const browserStorage = {
@@ -172,6 +173,7 @@ export function createFakeApi({
           engines: data.engines,
           cabin: data.cabin,
           livery: data.livery,
+          photo: normalizeAircraftPhoto(data.photo),
           profit: Math.round(capacity * 5 + distance * 0.055),
           price: Math.round(capacity * 20 + distance * 0.25),
           rentPrice: Math.round(capacity * 7 + distance * 0.12),
