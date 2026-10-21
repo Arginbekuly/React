@@ -4,7 +4,8 @@
 
 - **Приложение:** https://skyline-air-midterm.vercel.app
 - **Режим демонстрации ошибок:** https://skyline-air-midterm.vercel.app/?demo=1#catalog
-- **Исходники:** https://github.com/Arginbekuly/React/tree/codex/skyline-midterm/practice3/airlineManagerSpa
+- **Репозиторий:** https://github.com/Arginbekuly/React
+- **Текущая версия:** локальная ветка `codex/skyline-midterm`. Push пока не подтверждён: GitHub отклонил старые учётные данные, а Git Credential Manager не завершил повторный вход после подтверждения на сайте.
 - [Чек-лист midterm](MIDTERM-CHECKLIST.md)
 - [Памятка для защиты](DEFENSE.md)
 
@@ -172,3 +173,12 @@ Render вычисляет дерево из props/state, commit применяе
 Отдельный backend не требуется: simulated API работает в браузере. `.vercel`, `.env`, node_modules и dist не коммитятся. Автоматический деплой из GitHub отдельно не настроен; текущая публикация выполнена CLI.
 
 Перед сдачей автору нужно пройти ручные сценарии из чек-листа, отрепетировать защиту, приложить ссылки на GitHub и публичное приложение и нажать **Turn in до дедлайна**. Само наличие репозитория/деплоя не отправляет задание в учебную систему.
+
+Чтобы завершить публикацию исходников после восстановления входа GitHub, выполните в каталоге приложения:
+
+```bash
+git push -u origin codex/skyline-midterm
+```
+
+После успешной отправки текущая версия будет доступна по адресу:
+`https://github.com/Arginbekuly/React/tree/codex/skyline-midterm/practice3/airlineManagerSpa`.
