@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  color: #262636;
+  background: #f7f8fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
+  font-size: 14px;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: 1px solid #e5e6ee;
+  background: white;
+  border-radius: 9px;
+  padding: 10px 15px;
+  color: #525366;
+  font-weight: 700;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+button:hover {
+  background: #f2f0fc;
+  border-color: #cfc7ef;
+}
+button:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #a899e8;
+  outline-offset: 3px;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #e2e3ed;
+  border-radius: 8px;
+  color: #303044;
+  background: #fff;
+  outline: none;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #8266da;
+  box-shadow: 0 0 0 3px #eee9fc;
+}
+textarea {
+  resize: vertical;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+button.primary {
+  background: #7757ce;
+  color: white;
+  border-color: #7757ce;
+}
+button.primary:hover {
+  background: #6545bb;
+}
+button.danger {
+  background: #c54153;
+  color: white;
+  border-color: #c54153;
+}
+.muted {
+  color: #848495;
+  line-height: 1.65;
+}
+.text-button {
+  border: none;
+  background: none;
+  padding: 5px;
+}
+.eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #9384b6;
+  margin-bottom: 10px;
+}
