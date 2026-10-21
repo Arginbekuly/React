@@ -41,7 +41,6 @@ function App() {
   const navigate = (nextPage) => {
     setRoute({ page: nextPage, id: null });
     if (nextPage !== 'home') window.location.hash = nextPage;
-    else if (page !== 'home') window.location.hash = 'catalog';
     if (nextPage !== page) window.scrollTo({ top: 0, behavior: 'instant' });
   };
   const details = (id) => {
