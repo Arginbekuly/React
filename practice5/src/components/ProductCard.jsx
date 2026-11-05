@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
     if (!product) return null;
