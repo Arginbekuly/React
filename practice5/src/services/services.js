@@ -4,7 +4,7 @@ export async function getProducts(search = "",signal) {
         url = `https://dummyjson.com/products/search?q=${encodeURIComponent(search)}&limit=12`;
     }
     else{
-        url = `https://dummyjson.com/products/?limit=12`;
+        url = `https://dummyjson.com/products/?limit=50`;
     }
 
     const response = await fetch(url,{signal})

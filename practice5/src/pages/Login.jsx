@@ -8,7 +8,6 @@ export default function Login() {
                 <label className="mb-2 block text-sm font-semibold">Password</label>
                 <input type="password" placeholder="••••••••" className="mb-5 w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-200" />
                 <button type="button" disabled className="w-full cursor-not-allowed rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white opacity-70">Sign in (coming soon)</button>
-                <p className="mt-4 text-center text-xs text-slate-400">Authentication is not enabled in this homework.</p>
             </div>
         </section>
     );
