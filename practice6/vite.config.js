@@ -8,5 +8,5 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/React/jwtAuth/'
+  base: '/React/practice6/'
 })
