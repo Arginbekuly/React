@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useProductsQuery } from "../hooks/useProductsQuery.js";
+import { useProductQuery } from "../hooks/useProductQuery.js";
 import { useUpdateProduct } from "../hooks/useUpdateProduct";
 
 export default function ProductDetails() {
@@ -17,7 +17,7 @@ export default function ProductDetails() {
         isError,
         error,
         isFetching,
-    } = useProductsQuery(id);
+    } = useProductQuery(id);
 
     const updateMutation = useUpdateProduct();
     const [newTitle, setNewTitle] = useState("");
