@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <title>Offline | ReactShop</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #f8fafc;
+            font-family: Arial, sans-serif;
+            color: #0f172a;
+        }
+
+        .offline-card {
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 24px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin: 0 0 16px;
+        }
+
+        p {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 30px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        button:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 360px) {
+            .offline-card {
+                padding: 30px 18px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<main class="offline-card">
+    <div class="icon" aria-hidden="true">📡</div>
+
+    <h1>You're Offline</h1>
+
+    <p>
+        Please check your internet connection
+        and try again.
+    </p>
+
+    <button id="retryButton" type="button">
+        Retry Connection
+    </button>
+</main>
+
+<script>
+    document
+        .getElementById("retryButton")
+        .addEventListener("click", () => {
+            window.location.reload();
+        });
+</script>
+</body>
+</html>
