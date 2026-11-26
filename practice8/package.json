@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -e practice8 --add --nojekyll"
+    "deploy": "node scripts/deploy.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.15.0",

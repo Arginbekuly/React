@@ -62,7 +62,7 @@ npm run preview
 
 Vite uses `/React/practice8/` as its base path. The app uses `HashRouter`, so product and profile routes can be opened directly on GitHub Pages. The manifest is referenced through the Vite base path, and the service worker precaches the built assets and offline page. Runtime caches cover public DummyJSON GET requests and product images; Firebase data is not cached by the service worker.
 
-The deploy script publishes the `dist` build to the `practice8` directory on the configured `gh-pages` branch:
+The deploy script publishes the `dist` build to the `practice8` directory on the configured `gh-pages` branch. It keeps the temporary Git clone outside the repository so the deploy cache is not published with the site:
 
 ```bash
 npm run deploy
