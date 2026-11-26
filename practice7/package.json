@@ -9,7 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -e practice7"
+    "deploy": "gh-pages -d dist -e practice7 --add --nojekyll"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.107.1",
